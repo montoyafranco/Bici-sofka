@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 
 public class Bicycle {
-    public static List<Bicycle> bicis = new ArrayList<>();
    ///Atributtes
    public String UniqueCode;
    public String color;

@@ -9,8 +9,19 @@ public class User {
     public String fullname;
     public int age;
     public String id   ;
+    public boolean hasTicket = false;
 
+    public boolean isHasTicket() {
+        return hasTicket;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setHasTicket(boolean hasTicket) {
+        this.hasTicket = hasTicket;
+    }
 
     // agrergar type despues UserType uType
     public User(UserType uType , int age , int dni, String name, String surname)throws Exception {

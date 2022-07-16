@@ -1,6 +1,13 @@
 package Menu;
 
+import Bicycle.Bicycle;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static Menu.Principal.bicies;
 
 public class Menu {
 
@@ -15,6 +22,7 @@ public class Menu {
 
         return userInput;
     }
+
     public static boolean askYesNo(String question) {
         Scanner input = new Scanner(System.in);
         String answer;
@@ -48,6 +56,14 @@ public class Menu {
         } while(userInput < 1 || userInput > 2);
 
         return uType;
+    }
+    public static String askId(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please introduce the ID example : S/P-45856668");
+        String answer = scan.nextLine();
+        return answer;
+
+
     }
 }
 

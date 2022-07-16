@@ -7,8 +7,6 @@ import java.util.*;
 
 
 public class Principal {
-
-
     public static List<User> users = new ArrayList<>();
     public static List<Bicycle> bicies = new ArrayList<>();
     //-------------- ARRIBA GUARDO MIS USUARIOS-----
@@ -17,6 +15,7 @@ public class Principal {
     //Resources.setDefaults(); algo asi me serviria para poner las cosas por default
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
+        //function to read and push array of txt bycicles
         File file = new File("src/main/java/Bicycle/bicycles.txt");
         Scanner scan;
         ArrayList<List> newLine = new ArrayList<>();
@@ -29,17 +28,20 @@ public class Principal {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       for (List linea : newLine){
-           System.out.println(linea.get(0));
-          Bicycle bici = new Bicycle((String) linea.get(0), (String) linea.get(1), (String) linea.get(2),Boolean.parseBoolean((String) linea.get(3)));
-          bicies.add(bici);
-       }
-       for(Bicycle aver : bicies){
-           System.out.println(aver.getAccessible()+ aver.getBikeType()  );
-       }
+        for (List linea : newLine){
+            //System.out.println(linea.get(0));
+            Bicycle bici = new Bicycle((String) linea.get(0), (String) linea.get(1), (String) linea.get(2),
+                    Boolean.parseBoolean((String) linea.get(3)));
+            bicies.add(bici);
+        }
+
+        for(Bicycle aver : bicies){
+
+           // System.out.println(aver.getAccessible()+ aver.getBikeType()  );
+        }
 
 
-        boolean seeAgain; //
+        boolean seeAgain;
 
         do {
             // Menu.menu ( mensage) imprime lo que le des de parametro y ejecuta NextLine y retorna su valor
@@ -64,6 +66,13 @@ public class Principal {
                         System.out.println("ID:" + user1.id + "\n" + "Name: " + user1.fullname + "\n" + "Age: " + user1.age);
                     }
                     if (user == null) break;
+                    break;
+                case 2:
+                    //ask for id
+                    String id = Menu.askId();
+                    System.out.println("Soy id"+ id);
+
+
                     break;
 
                 default:
