@@ -14,7 +14,23 @@ public class Bicycle {
    public Boolean isAccessible;
    public String bikeType;
 
-    public Bicycle(String uniqueCode,  String bikeType ,String color, Boolean isAccessible) throws FileNotFoundException {
+    public String getUniqueCode() {
+        return UniqueCode;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public Boolean getAccessible() {
+        return isAccessible;
+    }
+
+    public String getBikeType() {
+        return bikeType;
+    }
+
+    public Bicycle(String uniqueCode, String bikeType , String color, Boolean isAccessible) throws FileNotFoundException {
         UniqueCode = uniqueCode;
         this.color = color;
         this.isAccessible = isAccessible;
@@ -22,8 +38,12 @@ public class Bicycle {
     }
 
 
-
-
-
 }
+
+
+
+
+
+
+
 
