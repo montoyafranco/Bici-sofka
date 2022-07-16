@@ -1,5 +1,7 @@
 package Menu;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 
@@ -11,8 +13,16 @@ public class Principal {
 
 
     //Resources.setDefaults(); algo asi me serviria para poner las cosas por default
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
+        File file = new File("src/main/java/Bicycle/bicycles.txt");
+        Scanner scan = new Scanner(file);
+        while(scan.hasNextLine()){
+            System.out.println(scan.nextLine());
+        }
+
+
+
         boolean seeAgain; //
 
         do {
