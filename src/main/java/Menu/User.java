@@ -8,6 +8,9 @@ public class User {
     public String surname;
     public String fullname;
     public int age;
+    public String id   ;
+
+
 
     // agrergar type despues UserType uType
     public User(UserType uType , int age , int dni, String name, String surname)throws Exception {
@@ -20,6 +23,19 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.fullname = name +" "+ surname;
+        setId(this.uType,this.dni);
+    }
 
+    public void setId(UserType uType,int dni) {
+
+
+        if(uType == uType.STUDENT){
+
+            this.id =   uType.STUDENT.toString().charAt(0) + "-" + String.valueOf(this.dni);
+        }
+        if(uType == uType.PROFESSOR){
+
+            this.id =   uType.PROFESSOR.toString().charAt(0) + "-" + String.valueOf(this.dni);
+        }
     }
 }

@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    // Follow the structure of sanipet
-    //
     public static int menu(String message){
 
         int userInput;

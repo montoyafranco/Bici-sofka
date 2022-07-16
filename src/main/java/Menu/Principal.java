@@ -35,7 +35,7 @@ public class Principal {
                     users.add(user);
 
                     for (User user1 : users){
-                        System.out.println(user1.uType + " " +user1.dni +" "+ user1.name +" "+ user1.surname + " "+user1.fullname + " "+user1.age);
+                        System.out.println(user1.uType + " "+ user1.id +" " +user1.dni + " "+user1.fullname + " "+user1.age);
                     }
                     if(user == null) break;
                     //pets.add(Creation.newPatient(owner));

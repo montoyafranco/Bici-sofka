@@ -1,6 +1,6 @@
 package Menu;
 
-
+import Menu.User;
 import java.util.Scanner;
 
 public class Creation {
@@ -20,6 +20,7 @@ public class Creation {
 
         String surname = scanner.nextLine();
 
+
         try {
             return new User (uType,age ,dni,name,surname);
         } catch (Exception err) {
@@ -27,4 +28,6 @@ public class Creation {
         }
         return null;
     }
+
+
 }
