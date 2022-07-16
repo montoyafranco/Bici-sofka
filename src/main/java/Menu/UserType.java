@@ -1,4 +1,4 @@
-package User;
+package Menu;
 
 public enum UserType {
     STUDENT, PROFESSOR

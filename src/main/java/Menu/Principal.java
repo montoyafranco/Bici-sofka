@@ -1,7 +1,5 @@
 package Menu;
 
-import User.User;
-
 import java.util.*;
 
 
@@ -15,8 +13,10 @@ public class Principal {
     //Resources.setDefaults(); algo asi me serviria para poner las cosas por default
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        boolean seeAgain;
+        boolean seeAgain; //
+
         do {
+            // Menu.menu ( mensage) imprime lo que le des de parametro y ejecuta NextLine y retorna su valor
             int optSelected = Menu.menu(
                     """
                     ______________________________________
@@ -33,9 +33,9 @@ public class Principal {
                 case 1:
                     User user = Creation.newUser();
                     users.add(user);
-                    System.out.println(users);
+
                     for (User user1 : users){
-                        System.out.println(user1.dni +" "+ user1.name  + " "+user1.fullname + " "+user1.age);
+                        System.out.println(user1.uType + " " +user1.dni +" "+ user1.name +" "+ user1.surname + " "+user1.fullname + " "+user1.age);
                     }
                     if(user == null) break;
                     //pets.add(Creation.newPatient(owner));

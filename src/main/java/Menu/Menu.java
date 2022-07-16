@@ -30,5 +30,26 @@ public class Menu {
 
         return "Y".equals(answer);
     }
+    static UserType askUserType() {
+        Scanner scanner = new Scanner(System.in);
+        int userInput;
+        UserType uType = null;
 
+        do {
+            System.out.println(
+                    """
+                    Introduce your type of user
+                         1. Student    2. Professor
+                    """
+            );
+            userInput = scanner.nextInt();
+
+            uType = userInput == 1 ?
+                    uType.STUDENT : uType.PROFESSOR;
+
+        } while(userInput < 1 || userInput > 2);
+
+        return uType;
+    }
 }
+

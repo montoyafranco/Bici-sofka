@@ -1,11 +1,12 @@
 package Menu;
 
-import User.User;
 
 import java.util.Scanner;
 
 public class Creation {
     public static User newUser() {
+
+        UserType uType = Menu.askUserType();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your Age: ");
         int age = scanner.nextInt();
@@ -20,7 +21,7 @@ public class Creation {
         String surname = scanner.nextLine();
 
         try {
-            return new User (age ,dni,name,surname);
+            return new User (uType,age ,dni,name,surname);
         } catch (Exception err) {
             err.printStackTrace();
         }
