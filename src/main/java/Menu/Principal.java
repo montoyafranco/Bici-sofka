@@ -9,42 +9,39 @@ import java.util.*;
 public class Principal {
     public static List<User> users = new ArrayList<>();
     public static List<Bicycle> bicies = new ArrayList<>();
-    //-------------- ARRIBA GUARDO MIS USUARIOS-----
 
-
-    //Resources.setDefaults(); algo asi me serviria para poner las cosas por default
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
-        //function to read and push array of txt bycicles
+
         File file = new File("src/main/java/Bicycle/bicycles.txt");
         Scanner scan;
-        ArrayList<List> newLine = new ArrayList<>();
+        ArrayList<List> lineList = new ArrayList<>();
         String line = null;
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/java/Bicycle/bicycles.txt"));
             while ((line = reader.readLine()) != null) {
-                newLine.add(List.of(line.split(";")));
+                lineList.add(List.of(line.split(";")));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (List linea : newLine){
+        for (List linea : lineList){
             //System.out.println(linea.get(0));
             Bicycle bici = new Bicycle((String) linea.get(0), (String) linea.get(1), (String) linea.get(2),
                     Boolean.parseBoolean((String) linea.get(3)));
             bicies.add(bici);
         }
 
-        for(Bicycle aver : bicies){
-
+        //To read
+       // for(Bicycle aver : bicies){
+            //System.out.println(aver.UniqueCode);
            // System.out.println(aver.getAccessible()+ aver.getBikeType()  );
-        }
+        //}
 
 
         boolean seeAgain;
 
         do {
-            // Menu.menu ( mensage) imprime lo que le des de parametro y ejecuta NextLine y retorna su valor
             int optSelected = Menu.menu(
                     """
                             ______________________________________
@@ -70,11 +67,32 @@ public class Principal {
                 case 2:
                     //ask for id
                     String id = Menu.askId();
-                    System.out.println("Soy id"+ id);
+                    for(User usuarito : users){
 
+                        if(usuarito.getId().equals(id)){
+                            System.out.println("-----------User in the system Found-------------------");
+                            System.out.println("User ID : " + " "+ usuarito.getId() +" User Fullname : "+ usuarito.fullname +" "+ "User Type :" +usuarito.uType);
+                            System.out.println("Please choose the type of bike from the next list:");
+                            for(Bicycle aver : bicies){
+                                System.out.println("Bikes Type: " + aver.UniqueCode+" "+ "Bikes Type: " +aver.getBikeType()  );
+                            }
+                            System.out.println("----Chosing the bicycle is under construction------");
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.println("Return of bicycle under construction");
+                    break;
+                case 4:
+                    System.out.println("Payment of tickets under construction");
+                    break;
+                case 5:
+                    System.out.println("Tickets history under construction");
+                    break;
+                case 6:
+                    System.out.println("Bye bye .You choose to exit the program");
 
                     break;
-
                 default:
                     System.out.println("Please select a valid option!!");
             }
