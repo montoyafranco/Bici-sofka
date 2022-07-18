@@ -54,15 +54,18 @@ public class Ticket {
                 ", status='" + status + '\'' +
                 '}';
     }
-    public void generateTicket(){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("tickets.txt"));
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
-    }
+//    public void generateTicket(Ticket tickets){
+//        try {
+//            BufferedWriter writer = new BufferedWriter(new FileWriter("tickets.txt"));
+//            for (Ticket ticketcito : tickets){
+//                writer.write(String.valueOf(ticketcito));
+//            }
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//
+//    }
 }
 

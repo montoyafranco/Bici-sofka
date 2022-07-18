@@ -40,23 +40,37 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         int userInput;
         UserType uType = null;
-
         do {
             System.out.println(
                     """
                     Introduce your type of user
                          1. Student    2. Professor
-                    """
-            );
+                    """           );
             userInput = scanner.nextInt();
-
             uType = userInput == 1 ?
                     uType.STUDENT : uType.PROFESSOR;
-
         } while(userInput < 1 || userInput > 2);
-
         return uType;
     }
+    static bicycleType askTypeBike() {
+        Scanner scanner = new Scanner(System.in);
+        int userInput;
+        bicycleType uType = null;
+        do {
+            System.out.println(
+                    """
+                    Introduce your type of Biky
+                         1. MOUNTAIN   2. ROAD
+                    """           );
+            userInput = scanner.nextInt();
+            uType = userInput == 1 ?
+                    uType.MOUNTAIN : uType.ROAD;
+        } while(userInput < 1 || userInput > 2);
+        return uType;
+    }
+
+
+
     public static String askId(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Please introduce the ID example : S/P-45856668");
