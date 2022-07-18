@@ -32,7 +32,7 @@ public class Principal {
             bicies.add(bici);
         }
 
-        //To read
+        //To read bic
        // for(Bicycle aver : bicies){
             //System.out.println(aver.UniqueCode);
            // System.out.println(aver.getAccessible()+ aver.getBikeType()  );
@@ -73,8 +73,10 @@ public class Principal {
                             System.out.println("-----------User in the system Found-------------------");
                             System.out.println("User ID : " + " "+ usuarito.getId() +" User Fullname : "+ usuarito.fullname +" "+ "User Type :" +usuarito.uType);
                             System.out.println("Please choose the type of bike from the next list:");
+                            System.out.println(usuarito);
                             for(Bicycle aver : bicies){
-                                System.out.println("Bikes Type: " + aver.UniqueCode+" "+ "Bikes Type: " +aver.getBikeType()  );
+
+//                                System.out.println("Bikes Type: " + aver.UniqueCode+" "+ "Bikes Type: " +aver.getBikeType()  );
                             }
                             System.out.println("----Chosing the bicycle is under construction------");
                         }

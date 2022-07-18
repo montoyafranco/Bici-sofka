@@ -49,4 +49,11 @@ public class User {
             this.id =   uType.PROFESSOR.toString().charAt(0) + "-" + String.valueOf(this.dni);
         }
     }
+    @Override
+    public String toString(){
+        return
+               "Data :"+ '\n' + "Type "+ uType +'\n'+ "DNI :" + dni +'\n'+"Name :" + name +'\n'+"Surname :"+surname+ '\n'
+                       +"Fullname:"+ fullname+ "Age:" +age +'\n'+
+                       "Id: "+ id +'\n'+"TICKET STATE :" +hasTicket  ;
+    }
 }
