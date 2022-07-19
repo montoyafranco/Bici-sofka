@@ -36,8 +36,19 @@ public class Bicycle {
         this.bikeType = bikeType;
     }
 
+    public void setAccessible(Boolean accessible) {
+        this.isAccessible = false;
+    }
 
-
+    @Override
+    public String toString() {
+        return "Bicycle{" +
+                "UniqueCode='" + UniqueCode + '\'' +
+                ", color='" + color + '\'' +
+                ", isAccessible=" + isAccessible +
+                ", bikeType='" + bikeType + '\'' +
+                '}';
+    }
 }
 
 

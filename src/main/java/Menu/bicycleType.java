@@ -1,5 +1,5 @@
 package Menu;
 
 public enum bicycleType {
-    MOUNTAIN, ROAD
+    Mountain, Road
 }

@@ -41,18 +41,18 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "code='" + code + '\'' +
-                ", bicycle=" + bicycle +
-                ", user=" + user +
-                ", date=" + date +
-                ", initialHour=" + initialHour +
-                ", finishHour=" + finishHour +
-                ", hasHelmet=" + hasHelmet +
-                ", hasDamage=" + hasDamage +
-                ", toPay=" + toPay +
-                ", status='" + status + '\'' +
-                '}';
+        return
+                "Code:" + code + '\'' +
+                "Bicycle: " + bicycle +
+                "User: " + user +
+                "Date:" + date +
+                "Start Time: " + initialHour +
+                "End Time" + finishHour +
+                "Have Helmet:" + hasHelmet +
+                "good conditions: " + hasDamage +
+                "Amont " + toPay +
+                "Status: " + status
+                ;
     }
 //    public void generateTicket(Ticket tickets){
 //        try {

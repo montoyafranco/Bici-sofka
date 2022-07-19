@@ -1,13 +1,12 @@
 package Menu;
-
 import Bicycle.Bicycle;
 import Ticket.Ticket;
-
 import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
-import static Menu.Menu.askTypeBike;
-
+import static Menu.Menu.*;
 
 public class Principal {
     public static List<User> users = new ArrayList<>();
@@ -18,32 +17,7 @@ public class Principal {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
-        File file = new File("src/main/java/Bicycle/bicycles.txt");
-        Scanner scan;
-        ArrayList<List> lineList = new ArrayList<>();
-        String line = null;
-        BufferedReader reader = new BufferedReader(new FileReader("src/main/java/Bicycle/bicycles.txt"));
-        try {
-            while ((line = reader.readLine()) != null) {
-                lineList.add(List.of(line.split(";")));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        reader.close();
-        for (List linea : lineList){
-            //System.out.println(linea.get(0));
-            Bicycle bici = new Bicycle((String) linea.get(0), (String) linea.get(1), (String) linea.get(2),
-                    Boolean.parseBoolean((String) linea.get(3)));
-            bicies.add(bici);
-        }
-
-
-        //To read bic
-       // for(Bicycle aver : bicies){
-            //System.out.println(aver.UniqueCode);
-           // System.out.println(aver.getAccessible()+ aver.getBikeType()  );
-        //}
+        read();
 
 
         boolean seeAgain;
@@ -72,28 +46,9 @@ public class Principal {
                     if (user == null) break;
                     break;
                 case 2:
-                    //ask for id
-                    String id = Menu.askId();
-                    for(User usuarito : users){
-                        if(usuarito.getId().equals(id)){
-                            System.out.println("-----------User in the system Found-------------------");
-                            System.out.println("User ID : " + " "+ usuarito.getId() +" User Fullname : "+ usuarito.fullname
-                                    +" "+ "User Type :" +usuarito.uType);
-                            if (usuarito.hasTicket){
-                                System.out.println("The user "+ usuarito.getId()+ "has a ticket with debt.Please cancel it and try again.");
-                                break;
-                            }
-                            System.out.println("Please choose the type of bike:");
-                            bicycleType typechose = Menu.askTypeBike();
-                            System.out.println(typechose);
 
-                            System.out.println(usuarito);
-//                            for(Bicycle aver : bicies){
-////                                System.out.println("Bikes Type: " + aver.UniqueCode+" "+ "Bikes Type: " +aver.getBikeType()  );
-//                            }
-                            System.out.println("----Chosing the bicycle is under construction------");
-                        }
-                    }
+
+
                     break;
                 case 3:
                     System.out.println("Return of bicycle under construction");
