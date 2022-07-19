@@ -1,11 +1,11 @@
 Code: T-001
-Bicycle:BIC-02
+Bicycle:BIC-01
 User:S-41
-Name:as as
+Name:asgf asf
 Date2022-07-19
 Start time :01:02
 End time 01:50
 Have helment true
-Good condition : false
+Good condition : true
 Status Active
 Amount 0

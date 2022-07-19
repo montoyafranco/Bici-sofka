@@ -52,13 +52,13 @@ public class Principal {
                             System.out.println("-----------User in the system Found-------------------");
                             System.out.println("User ID : " + " "+ usuarito.getId() +" User Fullname : "+ usuarito.fullname
                                     +" "+ "User Type :" +usuarito.uType);
-                            if (usuarito.hasTicket){
+                            if(usuarito.hasTicket){
                                 System.out.println("The user "+ usuarito.getId()+ "has a ticket with debt.Please cancel it and try again.");
                                 break;
-                            }
+                            }else{
                             System.out.println("Please choose the type of bike:");
                             String typechose = String.valueOf(askTypeBike());
-                            System.out.println("type choose" +typechose);
+                            System.out.println("Type chosen: "+" " +typechose);
                             int counter = 0;
                             for(Bicycle bicesita : bicies){
                                 if (bicesita.getBikeType().equals(typechose) && (bicesita.isAccessible) &&(counter == 0)){
@@ -67,42 +67,50 @@ public class Principal {
                                             "Code: " + bicesita.UniqueCode + "\n" +
                                             "Type: " + bicesita.getBikeType()  + "\n" + "Color:" + bicesita.color);
 
-                                    Ticket newTicket = new Ticket("T-001",bicesita,usuarito, LocalDate.now(), LocalTime.of(1,2),LocalTime.of(1,50),true,false,0,"Active");
+                                    usuarito.setHasTicket(true);         //------ make the status of user as has ticket
+                                    Ticket newTicket = new Ticket("T-001",bicesita,usuarito, LocalDate.now(), LocalTime.of(1,2),LocalTime.of(1,50),true,true,0,"Active");
+
+                                    bicesita.setAccessible();            //----- Make the bicycle accesible status = false
                                     tickets.add(newTicket);
+                                    System.out.println("A ticket was generated");
+                                    for (Ticket ticketcito : tickets){
+                                        System.out.println("Code: " + ticketcito.code + "\n"+
+                                                "Bicycle:" +  ticketcito.bicycle.UniqueCode  + "\n"+
+                                                "User:" + ticketcito.user.id + "\n"+
+                                                "Name:" + ticketcito.user.fullname + "\n"+
+                                                "Date" + ticketcito.date + "\n"+
+                                                "Start time :" + ticketcito.initialHour+ "\n"+
+                                                "End time " + ticketcito.finishHour + "\n"+
+                                                "Have helment " + ticketcito.hasHelmet + "\n"+
+                                                "Good condition : " + ticketcito.hasDamage + "\n"+
+                                                "Status " + ticketcito.status + "\n"+
+                                                "Amount " + ticketcito.toPay + "\n"+
+                                                "");
+                                        String print = Menu.writeT(ticketcito);
+                                    }
+                                    System.out.println("--------------");
+                                }else{
+                                    System.out.println("Sorry we are out of that type of bikes");
                                 }
-
-
                             }
+                            //System.out.println(bicies);   To see if the changues aply
                             counter = 0;
-
-                        }
+                        }}
                     }
-                    System.out.println("A ticket was generated");
-                    for (Ticket ticketcito : tickets){
-                        System.out.println("Code: " + ticketcito.code + "\n"+
-                                "Bicycle:" +  ticketcito.bicycle.UniqueCode  + "\n"+
-                                "User:" + ticketcito.user.id + "\n"+
-                                "Name:" + ticketcito.user.fullname + "\n"+
-                                "Date" + ticketcito.date + "\n"+
-                                "Start time :" + ticketcito.initialHour+ "\n"+
-                                "End time " + ticketcito.finishHour + "\n"+
-                                "Have helment " + ticketcito.hasHelmet + "\n"+
-                                "Good condition : " + ticketcito.hasDamage + "\n"+
-                                "Status " + ticketcito.status + "\n"+
-                                "Amount " + ticketcito.toPay + "\n"+
-                                "");
-                        String print = Menu.writeT(ticketcito);
-
-
-                    }
-                    System.out.println("--------------");
-
-
-
 
                     break;
                 case 3:
-                    System.out.println("Return of bicycle under construction");
+                    String idReturn = Menu.askId();
+                    for (Ticket bikeReturn : tickets){
+                        if (bikeReturn.user.getId().equals(idReturn)){
+                            System.out.println("ENTRE ENN LA CONDICION");
+                        }
+
+
+                    }
+                    System.out.println("Caso 1- sin deuda todo en buenas condiciones ");
+                    System.out.println("Caso 2 -bici dañada y sin casco");
+                    System.out.println("caso 3 -");
                     break;
                 case 4:
                     System.out.println("Payment of tickets under construction");

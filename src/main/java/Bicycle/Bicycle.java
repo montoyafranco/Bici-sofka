@@ -36,7 +36,7 @@ public class Bicycle {
         this.bikeType = bikeType;
     }
 
-    public void setAccessible(Boolean accessible) {
+    public void setAccessible() {
         this.isAccessible = false;
     }
 
