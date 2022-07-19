@@ -54,6 +54,7 @@ public class Ticket {
                 "Status: " + status
                 ;
     }
+
 //    public void generateTicket(Ticket tickets){
 //        try {
 //            BufferedWriter writer = new BufferedWriter(new FileWriter("tickets.txt"));
@@ -67,5 +68,12 @@ public class Ticket {
 //
 //
 //    }
+
+    public void setStatusOk() {
+        this.status = "OK";
+    }
+    public void setStatusPending() {
+        this.status = "Pending";
+    }
 }
 

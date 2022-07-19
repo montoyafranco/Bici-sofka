@@ -11,17 +11,12 @@ import static Menu.Menu.*;
 public class Principal {
     public static List<User> users = new ArrayList<>();
     public static List<Bicycle> bicies = new ArrayList<>();
-
     public static List<Ticket> tickets = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-
         read();
-
-
         boolean seeAgain;
-
         do {
             int optSelected = Menu.menu(
                     """
@@ -56,61 +51,68 @@ public class Principal {
                                 System.out.println("The user "+ usuarito.getId()+ "has a ticket with debt.Please cancel it and try again.");
                                 break;
                             }else{
-                            System.out.println("Please choose the type of bike:");
-                            String typechose = String.valueOf(askTypeBike());
-                            System.out.println("Type chosen: "+" " +typechose);
-                            int counter = 0;
-                            for(Bicycle bicesita : bicies){
-                                if (bicesita.getBikeType().equals(typechose) && (bicesita.isAccessible) &&(counter == 0)){
-                                    counter++;
-                                    System.out.println("Bicycle chosen!" +
-                                            "Code: " + bicesita.UniqueCode + "\n" +
-                                            "Type: " + bicesita.getBikeType()  + "\n" + "Color:" + bicesita.color);
+                                System.out.println("Please choose the type of bike:");
+                                String typechose = String.valueOf(askTypeBike());
+                                System.out.println("Type chosen: "+" " +typechose);
+                                int counter = 0;
+                                for(Bicycle bicesita : bicies){
+                                    if (bicesita.getBikeType().equals(typechose) && (bicesita.isAccessible) &&(counter == 0)){
+                                        counter++;
+                                        System.out.println("Bicycle chosen!" +
+                                                "Code: " + bicesita.UniqueCode + "\n" +
+                                                "Type: " + bicesita.getBikeType()  + "\n" + "Color:" + bicesita.color);
 
-                                    usuarito.setHasTicket(true);         //------ make the status of user as has ticket
-                                    Ticket newTicket = new Ticket("T-001",bicesita,usuarito, LocalDate.now(), LocalTime.of(1,2),LocalTime.of(1,50),true,true,0,"Active");
+                                        usuarito.setHasTicket(true);         //------ make the status of user as has ticket
+                                        Ticket newTicket = new Ticket("T-001",bicesita,usuarito, LocalDate.now(), LocalTime.of(1,2),LocalTime.of(1,50),true,true,0,"Active");
 
-                                    bicesita.setAccessible();            //----- Make the bicycle accesible status = false
-                                    tickets.add(newTicket);
-                                    System.out.println("A ticket was generated");
-                                    for (Ticket ticketcito : tickets){
-                                        System.out.println("Code: " + ticketcito.code + "\n"+
-                                                "Bicycle:" +  ticketcito.bicycle.UniqueCode  + "\n"+
-                                                "User:" + ticketcito.user.id + "\n"+
-                                                "Name:" + ticketcito.user.fullname + "\n"+
-                                                "Date" + ticketcito.date + "\n"+
-                                                "Start time :" + ticketcito.initialHour+ "\n"+
-                                                "End time " + ticketcito.finishHour + "\n"+
-                                                "Have helment " + ticketcito.hasHelmet + "\n"+
-                                                "Good condition : " + ticketcito.hasDamage + "\n"+
-                                                "Status " + ticketcito.status + "\n"+
-                                                "Amount " + ticketcito.toPay + "\n"+
-                                                "");
-                                        String print = Menu.writeT(ticketcito);
+                                        bicesita.setAccessible();            //----- Make the bicycle accesible status = false
+                                        tickets.add(newTicket);
+                                        System.out.println("A ticket was generated");
+                                        for (Ticket ticketcito : tickets){
+                                            Menu.Sout1(ticketcito);
+                                            String print = Menu.writeT(ticketcito);
+                                        }
+                                        System.out.println("--------------");
                                     }
-                                    System.out.println("--------------");
-                                }else{
-                                    System.out.println("Sorry we are out of that type of bikes");
                                 }
-                            }
-                            //System.out.println(bicies);   To see if the changues aply
-                            counter = 0;
-                        }}
+                                //System.out.println(bicies);   To see if the changues aply
+                                counter = 0;
+                            }}
                     }
 
                     break;
                 case 3:
                     String idReturn = Menu.askId();
                     for (Ticket bikeReturn : tickets){
+//                        System.out.println(bikeReturn);
                         if (bikeReturn.user.getId().equals(idReturn)){
-                            System.out.println("ENTRE ENN LA CONDICION");
+                            boolean askHelmet = Menu.askYesNo("Do you bring the helmet ok ?");
+                            boolean askDamage = Menu.askYesNo("Does the bike have damage ?");
+
+
+                            //setear status ..este de abajo es si esta todo ok
+                            bikeReturn.setStatusOk();
+
+
+                            //aca imprime como este la cosa no importa
+                            Menu.Sout1(bikeReturn);
+//
+                            //aca crea ticket
+                            String print = Menu.writeT(bikeReturn);
+                            //si tiene -tod0 ok aca
+                            //bikeReturn.setStatusPending();
+
+                            //si tiene
                         }
-
-
                     }
-                    System.out.println("Caso 1- sin deuda todo en buenas condiciones ");
-                    System.out.println("Caso 2 -bici dañada y sin casco");
-                    System.out.println("caso 3 -");
+
+
+
+
+
+//                    System.out.println("Caso 1- sin deuda todo en buenas condiciones ");
+//                    System.out.println("Caso 2 -bici dañada y sin casco");
+//                    System.out.println("caso 3 -");
                     break;
                 case 4:
                     System.out.println("Payment of tickets under construction");

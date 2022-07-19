@@ -38,6 +38,8 @@ public class Menu {
 
         return "Y".equals(answer);
     }
+
+
     static UserType askUserType() {
         Scanner scanner = new Scanner(System.in);
         int userInput;
@@ -141,5 +143,27 @@ public class Menu {
         writer.close();
         return null;
     }
+    public static String Sout1(Ticket ticket ) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/Bicycle/tickets.txt"));
+        for (Ticket ticket1 : tickets){
+            System.out.println((
+                    "Code: " + ticket1.code + "\n"+
+                            "Bicycle:" +  ticket1.bicycle.UniqueCode  + "\n"+
+                            "User:" + ticket1.user.id + "\n"+
+                            "Name:" + ticket1.user.fullname + "\n"+
+                            "Date" + ticket1.date + "\n"+
+                            "Start time :" + ticket1.initialHour+ "\n"+
+                            "End time " + ticket1.finishHour + "\n"+
+                            "Have helment " + ticket1.hasHelmet + "\n"+
+                            "Good condition : " + ticket1.hasDamage + "\n"+
+                            "Status " + ticket1.status + "\n"+
+                            "Amount " + ticket1.toPay + "\n"+
+                            ""
+            ));
+        }
+
+        return null;
+    }
+
 }
 
