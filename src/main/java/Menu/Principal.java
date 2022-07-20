@@ -63,7 +63,7 @@ public class Principal {
                                                 "Type: " + bicesita.getBikeType()  + "\n" + "Color:" + bicesita.color);
 
                                         usuarito.setHasTicket(true);         //------ make the status of user as has ticket
-                                        Ticket newTicket = new Ticket("T-001",bicesita,usuarito, LocalDate.now(), LocalTime.of(1,2),LocalTime.of(1,50),true,true,0,"Active");
+                                        Ticket newTicket = new Ticket("T-001",bicesita,usuarito, LocalDate.now(), LocalTime.of(20,00),LocalTime.of(21,50),true,true,0,"Active");
 
                                         bicesita.setAccessible();            //----- Make the bicycle accesible status = false
                                         tickets.add(newTicket);
@@ -84,35 +84,44 @@ public class Principal {
                 case 3:
                     String idReturn = Menu.askId();
                     for (Ticket bikeReturn : tickets){
-//                        System.out.println(bikeReturn);
+//
                         if (bikeReturn.user.getId().equals(idReturn)){
                             boolean askHelmet = Menu.askYesNo("Do you bring the helmet ok ?");
                             boolean askDamage = Menu.askYesNo("Does the bike have damage ?");
 
+                            if ((askHelmet == false) && (askDamage)){
+                                System.out.println("casco no ok");
+                                bikeReturn.setStatusPending();
+                                bikeReturn.setHasDamage();
+                                bikeReturn.setHasNoHelmet();
+                                bikeReturn.setToPayHelmet();
+                                bikeReturn.setToPayDamage();
 
-                            //setear status ..este de abajo es si esta todo ok
+
+
+                            }else if((askHelmet) && (askDamage)){
+                                bikeReturn.setStatusPending();
+                                bikeReturn.setHasDamage();
+                                bikeReturn.setToPayDamage();
+
+                            } else if ((askHelmet == false) && (askDamage == false)) {
+                                bikeReturn.setStatusPending();
+                                bikeReturn.setHasNoHelmet();
+                                bikeReturn.setToPayHelmet();
+
+                            }
                             bikeReturn.setStatusOk();
 
+                            bikeReturn.calculateAndAdd();
 
-                            //aca imprime como este la cosa no importa
+
                             Menu.Sout1(bikeReturn);
-//
-                            //aca crea ticket
-                            String print = Menu.writeT(bikeReturn);
-                            //si tiene -tod0 ok aca
-                            //bikeReturn.setStatusPending();
 
-                            //si tiene
+                            String print = Menu.writeT(bikeReturn);
+
                         }
                     }
 
-
-
-
-
-//                    System.out.println("Caso 1- sin deuda todo en buenas condiciones ");
-//                    System.out.println("Caso 2 -bici dañada y sin casco");
-//                    System.out.println("caso 3 -");
                     break;
                 case 4:
                     System.out.println("Payment of tickets under construction");
@@ -130,7 +139,7 @@ public class Principal {
             seeAgain = Menu.askYesNo(
                     "Do you want tu see the menu again?? [Y]/[N]"
             );
-            //clearConsole(); aca deberia poder cerrrar la consola
+
         } while (seeAgain);
 
     }

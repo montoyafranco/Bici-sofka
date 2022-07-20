@@ -75,5 +75,32 @@ public class Ticket {
     public void setStatusPending() {
         this.status = "Pending";
     }
+
+    public void setToPayHelmet() {
+        this.toPay = this.toPay + 5 ;
+    }
+    public void setToPayDamage() {
+        this.toPay = this.toPay + 5 ;
+    }
+
+    public void setHasNoHelmet() {
+        this.hasHelmet = false;
+    }
+
+    public void setHasDamage(){
+        this.hasDamage = true;
+    }
+    public void calculateAndAdd() {
+        int number1,number2;
+        number1 = initialHour.getHour()*60 + initialHour.getMinute();number2=finishHour.getHour()*60 + finishHour.getMinute();
+      int minusMinutes = number2 - number1 ;
+        if (minusMinutes > 60){
+            int resultado = (int) (Math.floor(minusMinutes /30) - 1);
+            int finalSum = resultado * 3 ;
+            this.toPay = this.toPay + finalSum;
+        }
+
+    }
+
 }
 

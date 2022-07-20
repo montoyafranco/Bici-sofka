@@ -1,11 +1,11 @@
 Code: T-001
-Bicycle:BIC-01
+Bicycle:BIC-02
 User:S-41
-Name:asdsdaas dasasddasasddassd
+Name:asffas fasafsfasfas
 Date2022-07-19
-Start time :01:02
-End time 01:50
-Have helment true
+Start time :20:00
+End time 21:50
+Have helment false
 Good condition : true
-Status OK
-Amount 0
+Status Pending
+Amount 11
