@@ -82,49 +82,13 @@ public class Principal {
 
                     break;
                 case 3:
-                    String idReturn = Menu.askId();
-                    for (Ticket bikeReturn : tickets){
-//
-                        if (bikeReturn.user.getId().equals(idReturn)){
-                            boolean askHelmet = Menu.askYesNo("Do you bring the helmet ok ?");
-                            boolean askDamage = Menu.askYesNo("Does the bike have damage ?");
-
-                            if ((askHelmet == false) && (askDamage)){
-                                System.out.println("casco no ok");
-                                bikeReturn.setStatusPending();
-                                bikeReturn.setHasDamage();
-                                bikeReturn.setHasNoHelmet();
-                                bikeReturn.setToPayHelmet();
-                                bikeReturn.setToPayDamage();
-
-
-
-                            }else if((askHelmet) && (askDamage)){
-                                bikeReturn.setStatusPending();
-                                bikeReturn.setHasDamage();
-                                bikeReturn.setToPayDamage();
-
-                            } else if ((askHelmet == false) && (askDamage == false)) {
-                                bikeReturn.setStatusPending();
-                                bikeReturn.setHasNoHelmet();
-                                bikeReturn.setToPayHelmet();
-
-                            }
-                            bikeReturn.setStatusOk();
-
-                            bikeReturn.calculateAndAdd();
-
-
-                            Menu.Sout1(bikeReturn);
-
-                            String print = Menu.writeT(bikeReturn);
-
-                        }
-                    }
+                    Menu.Conditionals3();
 
                     break;
                 case 4:
-                    System.out.println("Payment of tickets under construction");
+
+                    Menu.option4();
+
                     break;
                 case 5:
                     System.out.println("Tickets history under construction");

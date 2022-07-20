@@ -164,6 +164,67 @@ public class Menu {
 
         return null;
     }
+    public static void Conditionals3() throws IOException {
+        String idReturn = Menu.askId();
+        for (Ticket bikeReturn : tickets){
+//
+            if (bikeReturn.user.getId().equals(idReturn)){
+                boolean askHelmet = Menu.askYesNo("Do you bring the helmet ok ?");
+                boolean askDamage = Menu.askYesNo("Does the bike have damage ?");
+
+                if ((askHelmet == false) && (askDamage)){
+                    System.out.println("casco no ok");
+                    bikeReturn.setStatusPending();
+                    bikeReturn.setHasDamage();
+                    bikeReturn.setHasNoHelmet();
+                    bikeReturn.setToPayHelmet();
+                    bikeReturn.setToPayDamage();
+
+
+
+                }else if((askHelmet) && (askDamage)){
+                    bikeReturn.setStatusPending();
+                    bikeReturn.setHasDamage();
+                    bikeReturn.setToPayDamage();
+
+                } else if ((askHelmet == false) && (askDamage == false)) {
+                    bikeReturn.setStatusPending();
+                    bikeReturn.setHasNoHelmet();
+                    bikeReturn.setToPayHelmet();
+
+                }
+
+                bikeReturn.calculateAndAdd();
+
+                Menu.Sout1(bikeReturn);
+
+                String print = Menu.writeT(bikeReturn);
+
+            }
+        }
+
+
+    }
+    public static void option4() throws IOException {
+        String idReturnCase4 = Menu.askId();
+        for (Ticket payTick : tickets){
+            if ((payTick.user.getId().equals(idReturnCase4)) && (payTick.status.equals("Pending"))){
+                System.out.println("Ticket Found");
+                Sout1(payTick);
+                boolean payTicketAsk = askYesNo("Do you want to pay ?");
+                if (payTicketAsk){
+                    System.out.println("--------------");
+                    System.out.println("Ticket Updated");
+                    payTick.setStatusOk();
+                    Sout1(payTick);
+                    writeT(payTick);
+
+                }
+
+
+
+            }}
+    }
 
 }
 
